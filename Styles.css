@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыкальный сайт</title>
+    <style>
+        /* Основные стили */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Градиентный фон */
+            font-family: Arial, sans-serif;
+            color: #fff; /* Белый текст */
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Тень */
+            backdrop-filter: blur(10px); /* Размытие фона */
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff6f61; /* Цвет кнопки */
+            color: #fff; /* Белый текст */
+            transition: background-color 0.3s ease; /* Плавное изменение цвета */
+        }
+
+        button:hover {
+            background-color: #ff3b2f; /* Цвет кнопки при наведении */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #error-message p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="error-message">
+            <p>Ошибка: Пожалуйста, нажмите, чтобы продолжить.</p>
+            <button onclick="unlockSong()">Подарить</button>
+        </div>
+        <div id="song-player" class="hidden">
+            <audio id="audio" controls>
+                <source src="https://dl.dropbox.com/scl/fi/7g9arll79k8upccqd07uy/.mp3?rlkey=w4qznx8ze12ldywm8sy9605dh&st=brr9nkbj&dl=0" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+            <button onclick="redirectToTelegram()">Заглушить</button>
+        </div>
+    </div>
+
+    <script>
+        function unlockSong() {
+            document.getElementById('error-message').classList.add('hidden');
+            document.getElementById('song-player').classList.remove('hidden');
+            document.getElementById('audio').play();
+        }
+
+        function redirectToTelegram() {
+            window.location.href = 'https://t.me/+BqohVQYuL3BmMmMy'; // Ссылка на Telegram
+        }
+    </script>
+</body>
+</html>
